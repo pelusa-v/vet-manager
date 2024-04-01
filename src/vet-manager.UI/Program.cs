@@ -1,3 +1,4 @@
+using vet_manager.DataAccess;
 using vet_manager.UI.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Layers
+builder.Services.AddDataAccessLayer(builder.Configuration);
 
 var app = builder.Build();
 

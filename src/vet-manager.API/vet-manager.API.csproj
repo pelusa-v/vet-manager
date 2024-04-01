@@ -13,5 +13,8 @@
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vet-manager.Application\vet-manager.Application.csproj" />
+  </ItemGroup>
 
 </Project>
