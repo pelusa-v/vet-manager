@@ -38,6 +38,6 @@ public class AppDbContext : DbContext
 
     public DbSet<Client> Clients { get; set; }
     public DbSet<Pet> Pets { get; set; }
-    public DbSet<Race> Races { get; set; }
+    public DbSet<Breed> Breeds { get; set; }
     public DbSet<Animal> Animals { get; set; }
 }

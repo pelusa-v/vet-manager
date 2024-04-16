@@ -10,5 +10,5 @@ public class Pet : BaseEntity
     public Animal Animal { get; set; }
 
     public int RaceId { get; set; }
-    public Race Race { get; set; }
+    public Breed Breed { get; set; }
 }

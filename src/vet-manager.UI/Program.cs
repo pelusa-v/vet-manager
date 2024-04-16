@@ -8,7 +8,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 // Layers
-builder.Services.AddDataAccessLayer(builder.Configuration);
+builder.Services.AddDataAccessLayer(builder.Configuration); 
 
 var app = builder.Build();
 

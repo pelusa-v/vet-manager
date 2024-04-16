@@ -3,7 +3,7 @@ using vet_manager.Core.Entities.Consultations;
 
 namespace vet_manager.Core.Entities.Money;
 
-public abstract class ClientOperationAdditional
+public abstract class ClientOperationAdditional // to planning
 {
     public int Id { get; set; }
     public int Times { get; set; }
