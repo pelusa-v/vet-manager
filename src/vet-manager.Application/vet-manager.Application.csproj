@@ -4,6 +4,10 @@
     <ProjectReference Include="..\vet-manager.DataAccess\vet-manager.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services/" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>vet_manager.Application</RootNamespace>
