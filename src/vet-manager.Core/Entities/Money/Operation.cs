@@ -12,4 +12,9 @@ public class Operation
     public Consultation? Consultation { get; set; }
 
     public ICollection<OperationAdditional> Additionals { get; set; }
+
+    public Operation(decimal cost)
+    {
+        Cost = cost;
+    }
 }

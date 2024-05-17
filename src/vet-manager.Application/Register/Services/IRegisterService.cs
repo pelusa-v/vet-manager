@@ -1,8 +1,10 @@
-﻿namespace vet_manager.Application.Register.Services;
+﻿using vet_manager.Application.Register.DTOs;
+
+namespace vet_manager.Application.Register.Services;
 
 public interface IRegisterService
 {
-    public Task RegisterConsultation();
-    public Task RegisterPet();
+    public Task RegisterConsultation(RegisterConsultationDTO dto);
+    public Task RegisterPet(RegisterPetDTO dto);
     public Task RegisterClient();
 }
