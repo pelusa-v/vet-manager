@@ -1,4 +1,6 @@
-﻿namespace vet_manager.Core.Entities.Clients;
+﻿using vet_manager.Core.Entities.Consultations;
+
+namespace vet_manager.Core.Entities.Clients;
 
 public class Pet : BaseEntity
 {
@@ -11,4 +13,9 @@ public class Pet : BaseEntity
 
     public int RaceId { get; set; }
     public Breed Breed { get; set; }
+
+    public int ClientId { get; set; }
+    public Client Client { get; set; }
+
+    public ICollection<Consultation> Consultations { get; set; }
 }

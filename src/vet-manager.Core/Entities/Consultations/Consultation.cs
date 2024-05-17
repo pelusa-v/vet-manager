@@ -18,8 +18,11 @@ public class Consultation : BaseEntity
     public int ConsultationTypeId { get; set; }
     public ConsultationType ConsultationType { get; set; }
 
-    public int ClientId { get; set; }
-    public Client Client { get; set; }
+    public int PetId { get; set; }
+    public Pet Pet { get; set; }
+
+    public string Description { get; set; }
+    public string Diagnosis { get; set; }
 
     [NotMapped]
     public decimal TotalAmmount
