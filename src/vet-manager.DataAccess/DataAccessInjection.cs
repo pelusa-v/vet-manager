@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using vet_manager.DataAccess.Repositories.Clients;
 using vet_manager.DataAccess.Repositories.Consultations;
 using vet_manager.DataAccess.Repositories.Consultations.Impl;
+using vet_manager.DataAccess.Repositories.Money;
 
 namespace vet_manager.DataAccess;
 
@@ -26,6 +27,7 @@ public static class DataAccessInjection
         services.AddScoped<IConsultationTypeRepository, ConsultationTypeRepository>();
         services.AddScoped<IClientRepository, ClientRepository>();
         services.AddScoped<IPetRepository, PetRepository>();
+        services.AddScoped<IOperationRepository, OperationRepository>();
         return services;
     }
 }

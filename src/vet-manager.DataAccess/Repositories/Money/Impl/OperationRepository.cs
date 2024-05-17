@@ -4,7 +4,7 @@ using vet_manager.DataAccess.Repositories.Money;
 
 namespace vet_manager.DataAccess;
 
-public class OperationRepository : SimpleRepository<OperationAdditional>, IOperationAdditionalRepository
+public class OperationRepository : SimpleRepository<Operation>, IOperationRepository
 {
     public OperationRepository(AppDbContext appDbContext) : base(appDbContext)
     {

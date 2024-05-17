@@ -26,4 +26,8 @@ public class Pet : BaseEntity
         BreedId = breedId;
         ClientId = clientId;
     }
+
+    public Pet()
+    {
+    }
 }

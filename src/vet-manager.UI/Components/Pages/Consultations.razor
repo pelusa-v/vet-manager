@@ -1,0 +1,39 @@
+﻿@page "/test-consultation"
+@using vet_manager.Application.Register.DTOs;
+@using vet_manager.Application.Register.Services;
+@rendermode InteractiveServer
+
+<h3>Register consultation</h3>
+
+<form @onsubmit="HandleSubmit">
+    <div class="form-group">
+        <label for="consultationTypeId">Consultation Type ID</label>
+        <input type="number" class="form-control" id="consultationTypeId" placeholder="Enter Consultation Type ID"
+            @bind="consultationFormData.ConsultationTypeId" />
+    </div>
+    <div class="form-group">
+        <label for="petId">Pet ID</label>
+        <input type="number" class="form-control" id="petId" placeholder="Enter Pet ID"
+            @bind="consultationFormData.PetId" />
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3" placeholder="Enter Description"
+            @bind="consultationFormData.Description" ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@code {
+    [Inject]
+    private IRegisterService registerService { get; set; }
+    private RegisterConsultationDTO consultationFormData = new RegisterConsultationDTO();
+
+    private async Task HandleSubmit()
+    {
+        Console.WriteLine(consultationFormData.ConsultationTypeId);
+        Console.WriteLine(consultationFormData.Description);
+        Console.WriteLine(consultationFormData.PetId);
+        await registerService.RegisterConsultation(consultationFormData);
+    }
+}

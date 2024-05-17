@@ -30,7 +30,7 @@ public class RegisterService : IRegisterService
     {
         var basicbuilder = new BasicConsultationBuilder(_operationRepo);
         var director = new ConsultationDirector(basicbuilder);
-        var consultation = director.BuildConsultation(dto.ConsultationTypeId, dto.PetId, dto.Description);
+        var consultation = await director.BuildConsultation(dto.ConsultationTypeId, dto.PetId, dto.Description, dto.Cost);
         await _consultationRepo.Create(consultation);
     }
 

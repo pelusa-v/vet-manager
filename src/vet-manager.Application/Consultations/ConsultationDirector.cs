@@ -11,11 +11,12 @@ public class ConsultationDirector
         _builder = builder;
     }
 
-    public Consultation BuildConsultation(int typeId, int petId, string desc)
+    public async Task<Consultation> BuildConsultation(int typeId, int petId, string desc, decimal cost)
     {
         _builder.BuildConsultationType(typeId);
         _builder.BuildPet(petId);
         _builder.BuildDescription(desc);
+        await _builder.BuildOperation(cost);
         return _builder.Get();
     }
 }

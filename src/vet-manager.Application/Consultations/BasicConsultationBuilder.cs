@@ -30,6 +30,7 @@ public class BasicConsultationBuilder : IConsultationBuilder
     {
         var operation = new Operation(cost);
         await _operationRepo.Create(operation);
+        Console.WriteLine(operation.Id);
         _consultation.OperationId = operation.Id;
     }
 
@@ -40,6 +41,7 @@ public class BasicConsultationBuilder : IConsultationBuilder
 
     public Consultation Get()
     {
+        _consultation.Diagnosis = ""; // TO DELETE
         return _consultation;
     }
 }
