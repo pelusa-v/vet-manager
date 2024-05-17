@@ -13,7 +13,4 @@
   <ItemGroup>
     <ProjectReference Include="..\vet-manager.Core\vet-manager.Core.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories/Consultations/Impl/" />
-  </ItemGroup>
 </Project>

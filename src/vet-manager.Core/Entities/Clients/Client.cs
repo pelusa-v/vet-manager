@@ -8,6 +8,5 @@ public class Client
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public DateTime EnrollmentDate { get; set; }
-    
-    public ICollection<Consultation> Consultations { get; set; }
+    public ICollection<Pet> Pets { get; set; }
 }
