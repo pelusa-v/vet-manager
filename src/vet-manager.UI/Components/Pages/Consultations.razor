@@ -1,22 +1,32 @@
 ﻿@page "/test-consultation"
 @using vet_manager.Application.Register.DTOs;
 @using vet_manager.Application.Register.Services;
+@using vet_manager.Application.Consultations.Services;
+@using vet_manager.Application.Consultations.DTOs;
 @rendermode InteractiveServer
 
 <h3>Register consultation</h3>
 
 <form @onsubmit="HandleSubmit">
-    <div class="form-group">
-        <label for="consultationTypeId">Consultation Type ID</label>
+    <div class="form-group mb-2">
+        @* <label for="consultationTypeId">Consultation Type ID</label>
         <input type="number" class="form-control" id="consultationTypeId" placeholder="Enter Consultation Type ID"
-            @bind="consultationFormData.ConsultationTypeId" />
+            @bind="consultationFormData.ConsultationTypeId" /> *@
+        <label for="exampleSelect">Consultation Type ID</label>
+        <select class="form-control" id="consultationTypeId" @onchange="HandleSelectConsultationType">
+            @foreach (var t in types)
+            {
+                <option value="@t.Id">@t.FullName</option>
+            }
+        </select>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-2">
         <label for="petId">Pet ID</label>
         <input type="number" class="form-control" id="petId" placeholder="Enter Pet ID"
             @bind="consultationFormData.PetId" />
     </div>
-    <div class="form-group">
+    <div>Add new pet</div>
+    <div class="form-group mb-2">
         <label for="description">Description</label>
         <textarea class="form-control" id="description" rows="3" placeholder="Enter Description"
             @bind="consultationFormData.Description" ></textarea>
@@ -25,15 +35,28 @@
 </form>
 
 @code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        types = await consultationService.ListConsultationTypes();
+    }
+
+    private List<ConsultationTypeListItemDTO> types = new(){};
+
     [Inject]
     private IRegisterService registerService { get; set; }
+    [Inject]
+    private IConsultationService consultationService { get; set; }
     private RegisterConsultationDTO consultationFormData = new RegisterConsultationDTO();
 
     private async Task HandleSubmit()
     {
-        Console.WriteLine(consultationFormData.ConsultationTypeId);
-        Console.WriteLine(consultationFormData.Description);
-        Console.WriteLine(consultationFormData.PetId);
         await registerService.RegisterConsultation(consultationFormData);
     }
+
+    private void HandleSelectConsultationType(ChangeEventArgs e)
+    {
+        consultationFormData.ConsultationTypeId = int.Parse(e.Value.ToString());
+    }
 }
+
