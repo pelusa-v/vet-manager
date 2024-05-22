@@ -25,7 +25,11 @@
         <input type="number" class="form-control" id="petId" placeholder="Enter Pet ID"
             @bind="consultationFormData.PetId" />
     </div>
-    <div>Add new pet</div>
+
+    <div @onclick="OpenModal" style="cursor: pointer; color: @("blue");">
+        Add new pet
+    </div>
+
     <div class="form-group mb-2">
         <label for="description">Description</label>
         <textarea class="form-control" id="description" rows="3" placeholder="Enter Description"
@@ -34,12 +38,21 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
+@if (isModalOpen)
+{
+    <GeneralModal Title="Modal Title" OnClose="CloseModal">
+        <AddPet/>
+    </GeneralModal>
+}
+
 @code {
 
     protected override async Task OnInitializedAsync()
     {
         types = await consultationService.ListConsultationTypes();
     }
+
+    private bool isModalOpen = false;
 
     private List<ConsultationTypeListItemDTO> types = new(){};
 
@@ -57,6 +70,16 @@
     private void HandleSelectConsultationType(ChangeEventArgs e)
     {
         consultationFormData.ConsultationTypeId = int.Parse(e.Value.ToString());
+    }
+
+    private void OpenModal()
+    {
+        isModalOpen = true;
+    }
+
+    private void CloseModal()
+    {
+        isModalOpen = false;
     }
 }
 

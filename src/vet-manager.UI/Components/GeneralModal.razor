@@ -1,0 +1,67 @@
+﻿<div class="modal fade show" tabindex="-1" style="display: block;" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Title</h5>
+                <button type="button" class="close" @onclick="CloseModal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @ChildContent
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" @onclick="CloseModal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade show" style="display: block;"></div>
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private void CloseModal()
+    {
+        OnClose.InvokeAsync();
+    }
+}
+
+
+
+@* ModalComponent.razor *@
+@* <div class="modal fade" tabindex="-1" style="display: @(IsOpen ? "block" : "none");" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Title</h5>
+                <button type="button" class="close" @onclick="CloseModal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @ChildContent
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade show" style="display: @(IsOpen ? "block" : "none");"></div>
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private void CloseModal()
+    {
+        IsOpen = false;
+        OnClose.InvokeAsync();
+    }
+} *@
